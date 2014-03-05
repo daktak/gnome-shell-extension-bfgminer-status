@@ -1,4 +1,4 @@
-splay your MHS average from bfgminer
+Display your MHS average from bfgminer
 
 Edit the exensions.js to point to your server and port
 
