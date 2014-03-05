@@ -1,8 +1,13 @@
 /*
+ * todo
  * config variables
  * host
  * port
  * number of decimals
+ * refresh time
+ *
+ * refresh every x
+ * drop down extra values
  */
 const St = imports.gi.St;
 const Main = imports.ui.main;
@@ -13,12 +18,8 @@ const GObject = imports.gi.GObject;
 
 
 
-let text, button;
+let button, bt;
 
-function _hideHello() {
-    Main.uiGroup.remove_actor(text);
-    text = null;
-}
 
 function _getValue() {
       try {
@@ -50,11 +51,16 @@ function _getValue() {
          unit = " GHS";
       }
       num = parseFloat(num).toFixed(0);
-
+	
       } catch (err) {
       	return err.toString();
       }
       return num.toString()+unit;
+}
+
+function _update() {
+    let bt = this.bt
+    bt.set_text(_getValue());
 }
 
 function init() {
@@ -64,9 +70,9 @@ function init() {
                           x_fill: true,
                           y_fill: false,
                           track_hover: true });
-    let bt = new St.Label({text:_( _getValue() )});
+    bt = new St.Label({text:_( _getValue() )});
     button.set_child(bt);
-    button.connect('button-press-event', _getValue);
+    button.connect('button-press-event', _update);
 }
 
 function enable() {
