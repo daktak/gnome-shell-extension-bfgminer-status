@@ -59,7 +59,6 @@ function _getValue() {
 }
 
 function _update() {
-    let bt = this.bt
     bt.set_text(_getValue());
 }
 
