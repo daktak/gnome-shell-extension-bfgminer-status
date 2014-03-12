@@ -11,7 +11,6 @@
  */
 const St = imports.gi.St;
 const Main = imports.ui.main;
-const Tweener = imports.ui.tweener;
 const GLib = imports.gi.GLib;
 const Gio = imports.gi.Gio;
 const GObject = imports.gi.GObject;
@@ -29,7 +28,7 @@ function _getValue() {
       //print("Connected to server");
 
       var output = conn.get_output_stream();
-      var output_stream = new Gio.DataOutputStream.new(output);
+      var output_stream = new Gio.DataOutputStream(output);
 
       var message = JSON.stringify({ command: 'summary', parameter: '' } );
 
@@ -37,7 +36,7 @@ function _getValue() {
       output.flush(null);
       
       var input = conn.get_input_stream();
-      var input_stream = new Gio.DataInputStream.new(input);
+      var input_stream = new Gio.DataInputStream(input);
       var data = input_stream.read_upto("\n", 1, null);
 
       var dataS = data.toString();

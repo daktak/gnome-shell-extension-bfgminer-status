@@ -1,5 +1,5 @@
 {
-	"shell-version": ["3.8.4"], 
+	"shell-version": ["3.10"], 
 	"uuid": "gnome-shell-extension-bfgminer-status@daktak.github.com", 
 	"name": "bfgminer status", 
 	"description": "Display average hashrate",
